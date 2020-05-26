@@ -37,17 +37,20 @@
     </TypeIdentifier>
     <ShowAsAssociation>
       <Field Name="context" />
-      <Property Name="CyclingTrainings" />
-      <Property Name="RunningTrainings" />
     </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
+  <Class Name="Microsoft.EntityFrameworkCore.DbContext" Collapsed="true">
+    <Position X="8" Y="1" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
   <Interface Name="DomainLibrary.Repositories.ICyclingRepository" Collapsed="true">
-    <Position X="6.25" Y="3.75" Width="1.5" />
+    <Position X="3" Y="4" Width="3.5" />
     <TypeIdentifier />
   </Interface>
   <Interface Name="DomainLibrary.Repositories.IRunningRepository" Collapsed="true">
-    <Position X="7.25" Y="3" Width="1.5" />
+    <Position X="3.5" Y="3" Width="3.75" />
     <TypeIdentifier />
   </Interface>
   <Font Name="Segoe UI" Size="9" />
