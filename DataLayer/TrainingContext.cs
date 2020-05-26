@@ -10,6 +10,8 @@ namespace DataLayer
     public class TrainingContext : DbContext
     {
         private string connectionString;
+       //public string connectionString= @"Data Source=.\SQLEXPRESS;Initial Catalog=trainingDB;Integrated Security=True";
+
 
         public TrainingContext()
         {
@@ -17,21 +19,27 @@ namespace DataLayer
 
         public TrainingContext(string db="Production") : base()
         {
-            SetConnectionString(db);           
+           
+                SetConnectionString(db);
+                
         }
         private void SetConnectionString(string db = "Production")
         {
-            var builder = new ConfigurationBuilder();
-            builder.AddJsonFile("appsettings.json", optional: false);
+           // var builder = new ConfigurationBuilder();
+           // builder.AddJsonFile("appsettings.json", optional: false);
 
-            var configuration = builder.Build();
+            //var configuration = builder.Build();
             switch (db)
             {
                 case "Production":
-                    connectionString = configuration.GetConnectionString("ProdSQLconnection").ToString();
+                    // connectionString = configuration.GetConnectionString("ProdSQLconnection").ToString();
+                    connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=trainingDB;Integrated Security=True";
+
                     break;
                 case "Test":
-                    connectionString = configuration.GetConnectionString("TestSQLconnection").ToString();
+                    //connectionString = configuration.GetConnectionString("TestSQLconnection").ToString();
+                    connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=trainingDBtest;Integrated Security=True";
+
                     break;
             }
         }
