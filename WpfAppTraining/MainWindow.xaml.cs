@@ -38,19 +38,19 @@ namespace WpfAppTraining
 
         private void btnAddCycle_Click(object sender, RoutedEventArgs e)
         {
-            String x = cyTrainType.Text;
+            
             CyclingSession cs = new CyclingSession();
-
-            cs.When = new DateTime(long.Parse(cyWhen.Text));
+            #region addNew Cycle
+            cs.When = DateTime.ParseExact(cyWhen.Text, "yyyy-MM-dd HH:mm tt", null);
             if(cyDist.Text != null) {
                 cs.Distance = float.Parse(cyDist.Text);
             };
-            cs.Time = new TimeSpan(long.Parse(cyTime.Text));
+            cs.Time = TimeSpan.Parse(cyTime.Text);
             if (cyAvgSpeed.Text != null)
             {
                 cs.AverageSpeed = float.Parse(cyAvgSpeed.Text); 
             }
-            if (cyAvgWat.Text != null)
+            if (cyAvgWat.Text != "")
             {
                 cs.AverageWatt = Convert.ToInt32(cyAvgWat.Text); 
             }
@@ -65,7 +65,7 @@ namespace WpfAppTraining
             {
                 cs.TrainingType = 2;
             }
-            if(cyComm.Text != null) { 
+            if(cyComm.Text != "") { 
             cs.Comments = cyComm.Text;
             }
 
@@ -83,9 +83,10 @@ namespace WpfAppTraining
             {
                 cs.BikeType = 3;
             }
-
+            #endregion
 
             dataEntities.CyclingSessions.Add(cs);
+            dataEntities.SaveChanges();
             dataGrid1.Items.Add(cs);
 
 
@@ -95,22 +96,46 @@ namespace WpfAppTraining
         {
             if (dataGrid1.SelectedItem != null)
                 dataEntities.CyclingSessions.Remove(dataGrid1.SelectedItem as CyclingSession);
+                dataGrid1.Items.Remove(dataGrid1.SelectedItem);
+                dataEntities.SaveChanges();
         }
 
         private void btnAddRun_Click(object sender, RoutedEventArgs e)
         {
-            foreach (object item in dataGrid2.Items)
+
+            RunningSession cs = new RunningSession();
+            #region addNew run
+            cs.When = DateTime.ParseExact(ruWhen.Text, "yyyy-MM-dd HH:mm tt", null);
+            cs.Distance = Convert.ToInt32(ruDist.Text);
+            cs.Time = TimeSpan.Parse(cyTime.Text);
+
+            if (ruAvgSpeed.Text != null)
             {
-
-
-                RunningSession rs = new RunningSession();
-               // dataGrid2.Items[dataGrid2.Items.IndexOf(item)].
-        //        if (!dataEntities.RunningSessions.Any(p => p.Id == item.Id)) { 
-        //        dataEntities.RunningSessions.Add(new RunningSession
-        //            (item.When,item.Distance,item.Time,item.AverageSpeed,item.TrainingType,item.co)
-        //            );
-        //        }
+                cs.AverageSpeed = float.Parse(ruAvgSpeed.Text);
             }
+
+            if (ruTrainType.Text.ToUpper().Equals(("Interval").ToUpper()))
+            {
+                cs.TrainingType = 0;
+            }
+            else if (ruTrainType.Text.ToUpper().Equals(("Endurance").ToUpper()))
+            {
+                cs.TrainingType = 1;
+            }
+            else if (ruTrainType.Text.ToUpper().Equals(("Recuperation").ToUpper()))
+            {
+                cs.TrainingType = 2;
+            }
+            if (ruyComm.Text != "")
+            {
+                cs.Comments = ruyComm.Text;
+            }
+            
+            #endregion
+
+            dataEntities.RunningSessions.Add(cs);
+            dataEntities.SaveChanges();
+            dataGrid2.Items.Add(cs);
 
         }
 
@@ -118,6 +143,8 @@ namespace WpfAppTraining
         {
             if (dataGrid2.SelectedItem != null)
                 dataEntities.RunningSessions.Remove(dataGrid2.SelectedItem as RunningSession);
+            dataGrid2.Items.Remove(dataGrid2.SelectedItem);
+            dataEntities.SaveChanges();
         }
     }
 }

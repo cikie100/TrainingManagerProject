@@ -38,14 +38,14 @@
 
                 <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal"
              VerticalAlignment="Center"><Rectangle Width="30"/>
-                    <TextBox Text="SetNewCycleInfo" Width="130" x:Name="cyWhen"  />
-                    <TextBox Text="(in km)" Width="55" x:Name="cyDist"/>
-                    <TextBox Text="" Width="55" x:Name="cyTime"/>
-                    <TextBox Text="" Width="90"  x:Name="cyAvgSpeed"/>
+                    <TextBox Text="2005-05-05 22:12 PM" Width="130" x:Name="cyWhen"  />
+                    <TextBox Text="33" Width="55" x:Name="cyDist"/>
+                    <TextBox Text="6:12:14" Width="55" x:Name="cyTime"/>
+                    <TextBox Text="30" Width="90"  x:Name="cyAvgSpeed"/>
                     <TextBox Text="" Width="90"  x:Name="cyAvgWat"/>
-                    <TextBox Text="" Width="80" x:Name="cyTrainType"/>
+                    <TextBox Text="Endurance" Width="80" x:Name="cyTrainType"/>
                     <TextBox Text="" Width="110" x:Name="cyComm"/>
-                    <TextBox Text="" Width="159" x:Name="cyBiket"/>
+                    <TextBox Text="RacingBike" Width="159" x:Name="cyBiket"/>
 
                 </StackPanel>
 
@@ -65,7 +65,17 @@
                     </DataGrid.Columns>
 
                 </DataGrid>
-                <TextBlock TextWrapping="Wrap" Text="TextBlock"/>
+                <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal"
+             VerticalAlignment="Center">
+                    <Rectangle Width="30"/>
+                    <TextBox Text="2009-05-05 22:17 PM" Width="130" x:Name="ruWhen"  />
+                    <TextBox Text="5000" Width="55" x:Name="ruDist"/>
+                    <TextBox Text="6:12:14" Width="55" x:Name="ruTime"/>
+                    <TextBox Text="30" Width="90"  x:Name="ruAvgSpeed"/>
+                    <TextBox Text="Endurance" Width="80" x:Name="ruTrainType"/>
+                    <TextBox Text="" Width="110" x:Name="ruyComm"/>
+
+                </StackPanel>
 
             </StackPanel>
         </Grid>
