@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppTraining"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="MainWindow" Height="450" Width="950"
         
         >
     <Grid Background="AliceBlue">
@@ -13,6 +13,8 @@
             <ColumnDefinition Width="200"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
+
+
         <Grid Grid.ColumnSpan="2" Margin="133,0,0,10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="208*" />
@@ -20,7 +22,7 @@
             </Grid.RowDefinitions>
             <StackPanel Orientation="Vertical" Margin="0,0,10,10" Grid.RowSpan="2">
                 <Label Content="Cyclings" FontSize="18" FontFamily="Calibri" FontWeight="Bold"/>
-                <DataGrid Name="dataGrid1"  AutoGenerateColumns="True"  CanUserAddRows="True" Height="158" Width="Auto" AlternatingRowBackground="MistyRose">
+                <DataGrid Name="dataGrid1" Height="123" Width="Auto" AlternatingRowBackground="MistyRose">
                     <DataGrid.Columns >
                         <DataGridTextColumn Width="30" Header="Id" Binding="{Binding Id}"></DataGridTextColumn>
                         <DataGridTextColumn Width="130" Header="When" Binding="{Binding When}"></DataGridTextColumn>
@@ -32,17 +34,46 @@
                         <DataGridTextColumn Width="110" Header="Comments" Binding="{Binding Comments}"></DataGridTextColumn>
                         <DataGridTextColumn Width="70" Header="BikeType" Binding="{Binding BikeType}"></DataGridTextColumn>
                     </DataGrid.Columns>
+                </DataGrid>
+
+                <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal"
+             VerticalAlignment="Center"><Rectangle Width="30"/>
+                    <TextBox Text="SetNewCycleInfo" Width="130" x:Name="cyWhen"  />
+                    <TextBox Text="(in km)" Width="55" x:Name="cyDist"/>
+                    <TextBox Text="" Width="55" x:Name="cyTime"/>
+                    <TextBox Text="" Width="90"  x:Name="cyAvgSpeed"/>
+                    <TextBox Text="" Width="90"  x:Name="cyAvgWat"/>
+                    <TextBox Text="" Width="80" x:Name="cyTrainType"/>
+                    <TextBox Text="" Width="110" x:Name="cyComm"/>
+                    <TextBox Text="" Width="159" x:Name="cyBiket"/>
+
+                </StackPanel>
+
+
+
+                <Label Content="Runnings" FontSize="18" FontFamily="Calibri" FontWeight="Bold"/>
+                <DataGrid Name="dataGrid2"  AutoGenerateColumns="True"  CanUserAddRows="True" Height="158
+                          " Width="Auto" AlternatingRowBackground="MistyRose">
+                    <DataGrid.Columns >
+                        <DataGridTextColumn Width="30" Header="Id" Binding="{Binding Id}"></DataGridTextColumn>
+                        <DataGridTextColumn Width="130" Header="When" Binding="{Binding When}"></DataGridTextColumn>
+                        <DataGridTextColumn Width="55" Header="Distance" Binding="{Binding Distance}"></DataGridTextColumn>
+                        <DataGridTextColumn Width="55" Header="Time" Binding="{Binding Time}"></DataGridTextColumn>
+                        <DataGridTextColumn Width="90" Header="AverageSpeed" Binding="{Binding AverageSpeed}"></DataGridTextColumn>
+                        <DataGridTextColumn Width="80" Header="TrainingType" Binding="{Binding TrainingType}"></DataGridTextColumn>
+                        <DataGridTextColumn Width="110" Header="Comments" Binding="{Binding Comments}"></DataGridTextColumn>
+                    </DataGrid.Columns>
 
                 </DataGrid>
-                <Label Content="Runnings" FontSize="18" FontFamily="Calibri" FontWeight="Bold"/>
-                <DataGrid Name="dataGrid2" Height="200" Width="Auto" AlternatingRowBackground="MistyRose"/>
+                <TextBlock TextWrapping="Wrap" Text="TextBlock"/>
+
             </StackPanel>
         </Grid>
-        <Button Style="{StaticResource ButtonStyle}" Click="btnAddCycle_Click" Content="Add Cycle" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" Width="102" Height="30"/>
-        <Button  Style="{StaticResource ButtonStyle}"  Click="btnDeleteCycle_Click" Content="Remove Cycle" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" Width="102" Height="30"/>
+        <Button Style="{StaticResource ButtonStyle}" Click="btnAddCycle_Click" Content="Add Cycle" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top" Width="102" Height="30"/>
+        <Button  Style="{StaticResource ButtonStyle}"  Click="btnDeleteCycle_Click" Content="Remove Cycle" HorizontalAlignment="Left" Margin="10,115,0,0" VerticalAlignment="Top" Width="102" Height="30"/>
 
-        <Button  Style="{StaticResource ButtonStyle}" Click="btnAddRun_Click" Content="Add Run" HorizontalAlignment="Left" Margin="10,230,0,0" VerticalAlignment="Top" Width="102" Height="30"/>
-        <Button  Style="{StaticResource ButtonStyle}" Click="btnDeleteRun_Click" Content="Remove Run" HorizontalAlignment="Left" Margin="10,265,0,0" VerticalAlignment="Top" Width="102" Height="30"/>
+        <Button  Style="{StaticResource ButtonStyle}" Click="btnAddRun_Click" Content="Add Run" HorizontalAlignment="Left" Margin="10,369,0,0" VerticalAlignment="Top" Width="102" Height="30"/>
+        <Button  Style="{StaticResource ButtonStyle}" Click="btnDeleteRun_Click" Content="Remove Run" HorizontalAlignment="Left" Margin="10,334,0,0" VerticalAlignment="Top" Width="102" Height="30"/>
 
     </Grid>
 </Window>

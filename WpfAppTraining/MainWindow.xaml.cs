@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DomainLibrary.Domain;
+using System;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -21,8 +20,6 @@ namespace WpfAppTraining
             GridCollection = new ObservableCollection<Grid>();
 
             //Voor Cycling
-            List<CyclingSession> cyclings = new List<CyclingSession>();
-
             foreach (CyclingSession sess in dataEntities.CyclingSessions)
             {
                 dataGrid1.Items.Add(sess);
@@ -31,27 +28,67 @@ namespace WpfAppTraining
 
             ///////////////////////////////////////////////////
             //Voor Running
-            List<RunningSession> runings = new List<RunningSession>();
-
             foreach (RunningSession rsess in dataEntities.RunningSessions)
             {
-                runings.Add(rsess);
+                dataGrid2.Items.Add(rsess);
             }
-            dataGrid2.ItemsSource = runings.ToList();
+
         }
 
 
         private void btnAddCycle_Click(object sender, RoutedEventArgs e)
         {
-            
-            foreach (CyclingSession cs in dataGrid1.Items)
-            {
+            String x = cyTrainType.Text;
+            CyclingSession cs = new CyclingSession();
 
-               // CyclingSession x = new CyclingSession(cs.ToString().);
-                if (! dataEntities.CyclingSessions.Contains(cs)){
-                 dataEntities.CyclingSessions.Add(cs);
-                }
+            cs.When = new DateTime(long.Parse(cyWhen.Text));
+            if(cyDist.Text != null) {
+                cs.Distance = float.Parse(cyDist.Text);
+            };
+            cs.Time = new TimeSpan(long.Parse(cyTime.Text));
+            if (cyAvgSpeed.Text != null)
+            {
+                cs.AverageSpeed = float.Parse(cyAvgSpeed.Text); 
             }
+            if (cyAvgWat.Text != null)
+            {
+                cs.AverageWatt = Convert.ToInt32(cyAvgWat.Text); 
+            }
+            if (cyTrainType.Text.ToUpper().Equals(("Interval").ToUpper())) {
+                cs.TrainingType = 0;
+            }
+            else if (cyTrainType.Text.ToUpper().Equals(("Endurance").ToUpper()))
+            {
+                cs.TrainingType = 1;
+            }
+            else if (cyTrainType.Text.ToUpper().Equals(("Recuperation").ToUpper()))
+            {
+                cs.TrainingType = 2;
+            }
+            if(cyComm.Text != null) { 
+            cs.Comments = cyComm.Text;
+            }
+
+            if (cyBiket.Text.ToUpper().Equals(("RacingBike").ToUpper())) { 
+            cs.BikeType = 0;
+            } else if (cyBiket.Text.ToUpper().Equals(("IndoorBike").ToUpper()))
+            {
+                cs.BikeType = 1;
+            }
+            else if (cyBiket.Text.ToUpper().Equals(("CityBike").ToUpper()))
+            {
+                cs.BikeType = 2;
+            }
+            else if (cyBiket.Text.ToUpper().Equals(("MountainBike").ToUpper()))
+            {
+                cs.BikeType = 3;
+            }
+
+
+            dataEntities.CyclingSessions.Add(cs);
+            dataGrid1.Items.Add(cs);
+
+
         }
 
         private void btnDeleteCycle_Click(object sender, RoutedEventArgs e)
@@ -62,14 +99,18 @@ namespace WpfAppTraining
 
         private void btnAddRun_Click(object sender, RoutedEventArgs e)
         {
-        //    foreach (RunningSession item in dataGrid2.Items)
-        //    {
+            foreach (object item in dataGrid2.Items)
+            {
+
+
+                RunningSession rs = new RunningSession();
+               // dataGrid2.Items[dataGrid2.Items.IndexOf(item)].
         //        if (!dataEntities.RunningSessions.Any(p => p.Id == item.Id)) { 
         //        dataEntities.RunningSessions.Add(new RunningSession
         //            (item.When,item.Distance,item.Time,item.AverageSpeed,item.TrainingType,item.co)
         //            );
         //        }
-        //    }
+            }
 
         }
 
