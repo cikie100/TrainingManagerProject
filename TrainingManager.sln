@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleAppPresentationLayer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainLibraryTest", "UnitTestDataLayer\DomainLibraryTest.csproj", "{836F2A21-B177-4097-A2A4-6E0A1801905D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp", "WpfApp\WpfApp.csproj", "{AF93BF4B-BA6A-482D-89F2-778526C05D73}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{836F2A21-B177-4097-A2A4-6E0A1801905D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{836F2A21-B177-4097-A2A4-6E0A1801905D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{836F2A21-B177-4097-A2A4-6E0A1801905D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF93BF4B-BA6A-482D-89F2-778526C05D73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF93BF4B-BA6A-482D-89F2-778526C05D73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF93BF4B-BA6A-482D-89F2-778526C05D73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF93BF4B-BA6A-482D-89F2-778526C05D73}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
